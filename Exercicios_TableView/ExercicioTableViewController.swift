@@ -10,6 +10,10 @@ import UIKit
 
 class ExercicioTableViewController: UITableViewController {
 
+    var jogos = ["Horizon zero dawn", "Uncharted 4"]
+    var empresas = ["Guerrilla", "Naugthy Dog"]
+    var imagens = ["hor", "unc"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,23 +28,25 @@ class ExercicioTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return jogos.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
         // Configure the cell...
-
+        cell.textLabel?.text = jogos[indexPath.row]
+        cell.imageView?.image = UIImage(named: imagens[indexPath.row])
+        cell.detailTextLabel?.text = empresas[indexPath.row]
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -77,7 +83,7 @@ class ExercicioTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -85,6 +91,6 @@ class ExercicioTableViewController: UITableViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }
