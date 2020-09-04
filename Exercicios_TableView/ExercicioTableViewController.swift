@@ -10,9 +10,12 @@ import UIKit
 
 class ExercicioTableViewController: UITableViewController {
 
+    var myIndex:Int = 0
+    
     var jogos = ["Horizon zero dawn", "Uncharted 4"]
     var empresas = ["Guerrilla", "Naugthy Dog"]
     var imagens = ["hor", "unc"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +50,15 @@ class ExercicioTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //let msg = "Você selecionou o jogo \(jogos[indexPath.row])"
+        //let alerta = UIAlertController(title: "Aviso", message: msg, preferredStyle: UIAlertController.Style.alert)
+        //alerta.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+        //present(alerta, animated: true, completion: nil)
+        
+        myIndex = indexPath.row
+        performSegue(withIdentifier: "abc", sender: nil)
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -90,6 +102,12 @@ class ExercicioTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        let vc = segue.destination as! ViewController
+        //vc.texto = jogos[myIndex]
+        
+        vc.texto = jogos[tableView.indexPathForSelectedRow!.item]
+        vc.studio = empresas[tableView.indexPathForSelectedRow!.item]
+        vc.imgTexto = imagens[tableView.indexPathForSelectedRow!.item]
     }
     
 
